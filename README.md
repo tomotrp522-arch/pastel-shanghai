@@ -85,7 +85,7 @@ node scripts/serve.mjs --dist
 
 ## GitHub Pages
 
-公開先は `https://tomotrp522-arch.github.io/pastel-shanghai/` を予定しています。**公開はまだ完了していません。** ログイン・初回アップロード・Pagesの画面操作は [公開手順](DEPLOYMENT.md) に記載しています。
+公開URLは **https://tomotrp522-arch.github.io/pastel-shanghai/** です。GitHub Actionsのbuild・deploy成功と公開ファイルの一致を確認しています。公開設定と更新操作は [公開手順](DEPLOYMENT.md) に記載しています。
 
 対象の `tomotrp522-arch/pastel-shanghai` リポジトリの `main` へプッシュすると、`.github/workflows/pages.yml` がテスト・ビルド後に `dist/` を自動デプロイします。初回は Settings → Pages → Source を **GitHub Actions** に設定してください。Actionsからの手動実行も可能です。
 

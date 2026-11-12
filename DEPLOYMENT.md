@@ -1,10 +1,12 @@
 # GitHub Pagesへの公開手順
 
-公開予定URL: **https://tomotrp522-arch.github.io/pastel-shanghai/**
+公開URL: **https://tomotrp522-arch.github.io/pastel-shanghai/**
 
 対象リポジトリ: **tomotrp522-arch/pastel-shanghai** のみ。
 
 ## 現在の状態
+
+- 回数制限・リタイア・手詰まり案内の更新を `main` にプッシュし、GitHub Actionsのbuild・deploy成功と公開URLのHTTP 200、新しいJavaScript・CSS・Service Workerの一致を確認済みです。
 
 - ローカルはGit管理下で、公開対象ブランチは `main` です。接続先は `https://github.com/tomotrp522-arch/pastel-shanghai.git` です。
 - ユーザーが作成した専用Publicリポジトリの存在をGitHub APIで確認しました。確認時点では空のリポジトリでした。別のリポジトリは操作しません。
