@@ -57,6 +57,9 @@
 .tools{gap:6px;margin:0 0 5px;flex-shrink:0}
 .game .tool{font-size:14px;color:#75415e;font-weight:700;letter-spacing:-.4px;padding:7px 0;gap:2px;min-height:60px;white-space:nowrap}
 .tool>span{font-size:25px;line-height:25px;color:#925271}
+.game .tool .tool-symbol{display:flex;align-items:center;justify-content:center;gap:4px}
+.game .tool .tool-label{font-size:14px;line-height:20px;font-family:inherit}
+.support-count{font-size:14px;line-height:20px;font-family:"Yu Gothic",sans-serif;font-weight:700;letter-spacing:0}
 .tool:disabled{opacity:1;color:#806e7d;background:#ede6eb;box-shadow:none}
 .tool:disabled>span{color:#806e7d}
 .game-footer{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-shrink:0}

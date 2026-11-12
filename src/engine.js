@@ -60,6 +60,19 @@ export function reshuffle(game,seed=Date.now()) {
   return {...assign(geometry,order,r,game.tiles),rearranged};
 }
 export function snapshot(game){return structuredClone({tiles:game.tiles,solution:game.solution});}
-export function undo(game){const prev=game.history.pop();if(!prev)return false;game.tiles=prev.tiles;game.solution=prev.solution;game.undos++;return true;}
+export const SUPPORT_LIMITS=Object.freeze({hints:3,shuffles:2,undos:3});
+export function remainingSupport(game,kind){return Math.max(0,SUPPORT_LIMITS[kind]-game[kind]);}
+export function useHint(game){if(game.completed||remainingSupport(game,'hints')===0)return null;const pair=availablePairs(game.tiles)[0];if(!pair)return null;game.hints++;return pair;}
+export function undo(game){if(game.completed||remainingSupport(game,'undos')===0)return false;const prev=game.history.pop();if(!prev)return false;game.tiles=prev.tiles;game.solution=prev.solution;game.undos++;return true;}
+export function commitShuffle(game,next){
+ if(game.completed||remainingSupport(game,'shuffles')===0||!next||status(next.tiles)!=='playing')return false;
+ const inventory=tiles=>tiles.filter(t=>!t.removed).map(t=>t.face).sort().join(',');
+ if(inventory(game.tiles)!==inventory(next.tiles))return false;
+ if(game.history.length>=200)game.history.shift();game.history.push(snapshot(game));
+ game.tiles=next.tiles;game.solution=next.solution;game.shuffles++;return true;
+}
+export function restartGame(game){game.tiles=structuredClone(game.initial);game.history=[];game.elapsed=game.hints=game.shuffles=game.undos=0;game.completed=false;return game;}
+export function retireGame(data){data.game=null;}
+export function stuckOptions(game){if(game.completed||status(game.tiles)!=='stuck')return [];return [...(remainingSupport(game,'shuffles')>0?['shuffle']:[]),...(remainingSupport(game,'undos')>0&&game.history.length?['undo']:[]),'restart','retire'];}
 export function stars(game){return game.hints+game.shuffles+game.undos===0&&game.elapsed<=game.initial.length*12?3:game.shuffles<=1&&game.hints<=3?2:1;}
 export function recordClear(progress,game){const p=structuredClone(progress);if(game.mode==='stage'){p.stars[game.level]=Math.max(p.stars[game.level]||0,stars(game));p.unlocked=Math.min(100,Math.max(p.unlocked,game.level+1));}else{const old=p.best[game.level];p.best[game.level]=old==null?game.elapsed:Math.min(old,game.elapsed);}return p;}
