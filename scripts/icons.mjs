@@ -1,0 +1,8 @@
+// Dependency-free PNG icon renderer. Regenerate with: node scripts/icons.mjs
+import {deflateSync} from 'node:zlib';
+import {writeFile} from 'node:fs/promises';
+function crc(buf){let c=0xffffffff;for(const b of buf){c^=b;for(let i=0;i<8;i++)c=(c>>>1)^((c&1)?0xedb88320:0);}return (c^0xffffffff)>>>0;}
+function chunk(type,data){const t=Buffer.from(type),n=Buffer.alloc(4),c=Buffer.alloc(4);n.writeUInt32BE(data.length);c.writeUInt32BE(crc(Buffer.concat([t,data])));return Buffer.concat([n,t,data,c]);}
+function rounded(x,y,l,t,w,h,r){const dx=Math.max(l+r-x,0,x-(l+w-r)),dy=Math.max(t+r-y,0,y-(t+h-r));return x>=l&&x<=l+w&&y>=t&&y<=t+h&&dx*dx+dy*dy<=r*r;}
+for(const size of [192,512]){const raw=Buffer.alloc((size*4+1)*size);for(let y=0;y<size;y++)for(let x=0;x<size;x++){const X=x*512/size,Y=y*512/size;let color=[242,220,229];if(rounded(X,Y,142,101,228,318,35))color=[183,203,185];if(rounded(X,Y,142,88,228,314,35))color=[255,252,243];if((Math.abs(X-256)<5&&Y>240&&Y<325)||((X-236)**2/23**2+(Y-289)**2/9**2<1)||((X-276)**2/23**2+(Y-277)**2/9**2<1))color=[141,180,155];for(let i=0;i<5;i++){const a=i*2*Math.PI/5,dx=X-256,dy=Y-225,rx=dx*Math.cos(a)+dy*Math.sin(a),ry=-dx*Math.sin(a)+dy*Math.cos(a);if(rx*rx/27**2+(ry+40)**2/48**2<1)color=[201,135,163];}if((X-256)**2+(Y-225)**2<17**2)color=[230,197,126];const o=y*(size*4+1)+1+x*4;raw.set([...color,255],o);}const ihdr=Buffer.alloc(13);ihdr.writeUInt32BE(size,0);ihdr.writeUInt32BE(size,4);ihdr[8]=8;ihdr[9]=6;await writeFile(`icons/icon-${size}.png`,Buffer.concat([Buffer.from([137,80,78,71,13,10,26,10]),chunk('IHDR',ihdr),chunk('IDAT',deflateSync(raw)),chunk('IEND',Buffer.alloc(0))]));}
+console.log('192px / 512px アイコンを生成しました');

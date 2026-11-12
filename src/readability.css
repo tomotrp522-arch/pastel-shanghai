@@ -1,0 +1,118 @@
+/* Readable text on soft surfaces; spacing, rather than type, shrinks on small screens. */
+:root{color:#65445a;font-weight:600;--muted:#73576b;--rose:#925271}
+.eyebrow,.difficulty small{display:none}
+.home-top .icon-button{margin-left:auto}
+.icon-button{color:#79516b;flex-shrink:0;width:42px;height:42px}
+.brand h1{color:#75415e;font-weight:700}
+.brand p{font-size:14px;letter-spacing:2px;color:#73576b;font-weight:600}
+.home-copy{color:#65445a;font-weight:600}
+.home-copy span{font-size:14px;letter-spacing:.4px;color:#73576b}
+.primary,.secondary{font-size:16px;font-weight:700;letter-spacing:.4px}
+.primary{background:linear-gradient(115deg,#98536f,#854561);border-color:#98536f}
+.secondary{color:#75415e;background:#fffcfb;border-color:#d5b7c7}
+.home-progress,.text-button,footer{font-size:14px;color:#73576b;letter-spacing:0}
+.home-progress{gap:20px}
+.text-button{font-weight:700}
+.topbar{gap:8px;flex-shrink:0}
+.topbar h2{font-family:inherit;color:#65445a;font-size:20px;font-weight:700;letter-spacing:1px}
+.topbar p{font-size:14px;font-weight:600;color:#73576b;letter-spacing:.5px;margin-top:2px}
+.section-intro{margin:20px 0}
+.section-intro h3{color:#65445a;font-weight:700;margin-top:0}
+.section-intro p{font-size:14px;color:#73576b;line-height:1.6;margin-top:8px}
+.chapter-tabs{gap:5px;margin-bottom:12px;flex-shrink:0}
+.chapter-tabs button{font-size:14px;font-weight:700;color:#75415e;padding:9px 0;background:#fff9fc;border-color:#d9bdcb}
+.chapter-tabs button.active{background:#925271;border-color:#925271}
+.stage-grid{min-height:0;gap:10px}
+.stage{gap:3px;min-height:48px}
+.stage>span{font-size:27px;color:#65445a;font-weight:700}
+.stage small,.stage:disabled small{font-size:14px;letter-spacing:1px;color:#73576b}
+.stage i{color:#c2b3bc}
+.stage i.earned{color:#946318}
+.stage:disabled{opacity:1;background:#eae3e9}
+.stage .lock{color:#796479}
+.small-note{font-size:14px;color:#73576b;line-height:1.6;margin-top:15px;font-weight:600}
+.difficulty-list{gap:15px;margin-top:6px}
+.difficulty{padding:22px 16px;gap:12px}
+.difficulty h3{font-family:inherit;font-size:24px;font-weight:700;color:#65445a}
+.difficulty p,.difficulty .best{font-size:14px;line-height:1.5;color:#73576b;letter-spacing:0}
+.difficulty p{margin:6px 0 9px}
+.difficulty b{color:#79516b}
+.difficulty-flower{width:35px}
+.game .topbar{min-height:52px}
+.game-stats{margin:10px 8px 8px;padding-bottom:8px;flex-shrink:0}
+.game-stats>div:not(.stat-flower){gap:1px;min-width:112px}
+.game-stats span{font-size:14px;letter-spacing:0;color:#73576b}
+.game-stats strong{font-family:inherit;font-variant-numeric:tabular-nums;font-size:28px;color:#65445a;font-weight:700;line-height:1.2;letter-spacing:.3px}
+.stat-flower{width:24px}
+.board-top{font-size:14px;color:#65445a;padding:0 2px 7px;gap:4px;flex-shrink:0;line-height:1.4}
+.zoom-button{font-size:14px;font-weight:700;color:#75415e;border-color:#d5b7c7;background:#fff9fc;padding:6px 9px;flex-shrink:0}
+.tile{background:linear-gradient(125deg,#fffef5,#fff9e9);border-color:#c8bca5}
+.tile.blocked{filter:brightness(.89)}
+.tile.selected{outline:4px solid #a42c68;background:#fff7e8;translate:0 -3px;box-shadow:0 4px 0 #bfa1b5,0 0 0 7px #d25d9833,0 0 18px #c43b8a88}
+.tile.hinted{outline:4px solid #9a6a12}
+.tile.free:hover{filter:brightness(1.02)}
+.board-bottom{font-size:14px;color:#65445a;padding:8px 2px;flex-shrink:0;line-height:1.4}
+.board-bottom>span:first-child{font-size:16px}
+.board-bottom>span:last-child{display:none}
+.tools{gap:6px;margin:0 0 5px;flex-shrink:0}
+.game .tool{font-size:14px;color:#75415e;font-weight:700;letter-spacing:-.4px;padding:7px 0;gap:2px;min-height:60px;white-space:nowrap}
+.tool>span{font-size:25px;line-height:25px;color:#925271}
+.tool:disabled{opacity:1;color:#806e7d;background:#ede6eb;box-shadow:none}
+.tool:disabled>span{color:#806e7d}
+.game-footer{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-shrink:0}
+.game .pause-button,.game .help-button{font-size:14px;font-weight:700;color:#75415e;letter-spacing:0;min-height:38px;padding:5px 10px;background:transparent}
+.game .game-foot{display:none}
+.game[aria-busy="true"] .tile{pointer-events:none}
+.shuffle-running .tile{will-change:transform;pointer-events:none;transition:none}
+.shuffle-particles{position:absolute;inset:0;pointer-events:none;z-index:4000;overflow:hidden}
+.shuffle-particles span{position:absolute;font-size:23px;color:#a36e22;text-shadow:0 0 8px #fff9d4}
+dialog{color:#65445a;font-weight:600}
+dialog h2{font-weight:700}
+.modal-body,.help-content{font-size:14px;line-height:1.8}
+.modal-actions button{font-size:16px}
+.result{font-size:14px;gap:12px;flex-wrap:wrap}
+.result strong{font-size:24px;font-weight:700;color:#65445a}
+.clear-stars{color:#946318}
+#pause-cover h3{font-weight:700;color:#65445a}
+#toast{font-size:14px;font-weight:600;background:#65445af5}
+@media(max-height:720px){
+ .screen{min-height:0}
+ .home .brand{margin-top:7px}
+ .home .hero-art{min-height:80px;max-height:130px;margin-top:4px}
+ .home .halo{width:120px;height:120px}
+ .home .hero-tile{width:54px;height:74px}
+ .home-copy{font-size:16px;line-height:1.6;margin:8px 0 12px;letter-spacing:1px}
+ .home-copy span{font-size:14px}
+ .home-actions{gap:8px;padding:0 8px}
+ .home-actions button{min-height:44px;padding:10px 16px}
+ .home-progress{margin-top:12px}
+ .home .text-button{margin-top:5px;padding:6px}
+ footer{padding-top:6px}
+ .section-intro{margin:12px 0}
+ .section-intro h3{font-size:20px}
+ .section-intro p{margin-top:5px}
+ .stage-grid{gap:7px}
+ .stage{min-height:44px}
+ .stage>span{font-size:24px}
+ .stages .small-note{margin-top:10px;font-size:14px}
+ .difficulty-list{gap:10px;margin-top:2px}
+ .difficulty{padding:13px 12px}
+ .difficulty h3{font-size:22px}
+ .difficulty p{margin:4px 0 6px}
+ .free .small-note{margin-top:12px}
+ .game{padding-inline:12px}
+ .game .game-stats{margin:6px 4px;padding-bottom:6px}
+ .game .game-stats strong{font-size:26px}
+ .game .board-bottom{padding:6px 2px}
+ .game .tool{font-size:14px;padding:5px 0;min-height:55px}
+ .game .pause-button,.game .help-button{min-height:34px;padding:4px 6px}
+}
+@media(max-height:600px){
+ .home .brand{margin-top:0}
+ .home .hero-art{min-height:52px;max-height:70px;margin-top:0}
+ .home .hero-tile{width:43px;height:58px}
+ .home .halo{width:85px;height:85px}
+ .home .home-copy{line-height:1.4;margin:4px 0 8px}
+ .home footer{display:none}
+}
+@media(prefers-reduced-motion:reduce){.shuffle-running .tile{will-change:opacity}.shuffle-particles{display:none}}
